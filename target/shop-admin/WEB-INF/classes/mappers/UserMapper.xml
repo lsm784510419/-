@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC  
+    "-//mybatis.org//DTD Mapper 3.0//EN"  
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+
+					<!--对应mapper接口的全路径-->
+<mapper namespace="com.fh.shop.admin.mapper.user.IuserMapper">
+    <!--增加方法-->
+    <insert id="add" parameterType="com.fh.shop.admin.po.user.User">
+        insert into t_user (userName,realName,password,sex,age,phone,email) values(#{userName},#{realName},#{password},#{sex},#{age},#{phone},#{email})
+    </insert>
+    <!--查询总条数方法-->
+    <select id="queryCount" parameterType="java.util.Map" resultType="int">
+        select count(*) from t_user
+    </select>
+    <!--查询所有数据-->
+    <select id="queryList" parameterType="java.util.Map" resultType="com.fh.shop.admin.po.user.User">
+        select id,userName,realName,sex,age,phone,email from t_user
+        limit #{start},#{length}
+    </select>
+
+    <!--删除用户方法-->
+    <delete id="delUser" parameterType="long">
+        delete from t_user where id=#{id}
+    </delete>
+
+    <!--回显方法-->
+        <select id="toUpdate" parameterType="long" resultType="com.fh.shop.admin.po.user.User">
+            select id,userName,realName,password,sex,age,phone,email from t_user where id=#{id}
+        </select>
+
+    <!--修改方法-->
+        <update id="update" parameterType="com.fh.shop.admin.po.user.User">
+            update t_user set userName=#{userName},realName=#{realName},password=#{password},sex=#{sex},age=#{age},phone=#{phone},email=#{email} where id=#{id}
+        </update>
+</mapper>

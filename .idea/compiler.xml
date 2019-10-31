@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="book_jpa" />
+        <module name="car_lsm" />
+        <module name="com-portal-springboot" />
+        <module name="shop-api-brand" />
+        <module name="shop-api-springboot" />
+        <module name="shop_admin_v1" />
+        <module name="shop_admin_v2" />
+        <module name="shop_admin_v3" />
+        <module name="shop_admin_v4" />
+        <module name="shop_admin_v5" />
+        <module name="shop_api_v1" />
+        <module name="shop_api_v2" />
+      </profile>
+    </annotationProcessing>
+  </component>
+</project>

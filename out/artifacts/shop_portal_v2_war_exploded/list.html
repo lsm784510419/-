@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/js/bootStrap/css/bootstrap.min.css"/>
+    <title>商品页面</title>
+</head>
+<body>
+    <div class="container">
+        <div class="row" id="resultDiv">
+
+        </div>
+    </div>
+    <div style="display: none" id="modelDiv">
+        <div class="col-sm-6 col-md-4">
+            <div class="thumbnail">
+                <img src="http://localhost:8084/##proImg##" width="100px" alt="...">
+                <div class="caption">
+                    <h3>##proName##</h3>
+                    <p><b><font color="#00008b">##price##</font></b></p>
+                    <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script src="/js/jquery-3.3.1.js"></script>
+<script src="/js/bootStrap/js/bootstrap.min.js"></script>
+<script>
+    $(function () {
+        initProductTable();
+    })
+    function initProductTable() {
+        $.ajax({
+            url:"http://localhost:8086/product/findList.do",
+            type:"post",
+            dataType:"jsonp",
+            success:function (result) {
+                if (result.code == 200){
+                    var v_data = result.data;
+                    for (var i = 0; i < v_data.length; i++) {
+                        var v_datalist = $("#modelDiv").html();
+                        var v_list= v_datalist.replace("##proName##",v_data[i].proName).replace("##price##",v_data[i].price).replace("##proImg##",v_data[i].proImg);
+                            $("#resultDiv").append(v_list);
+                    }
+                }
+            }
+        })
+    }
+</script>
+</body>
+</html>
